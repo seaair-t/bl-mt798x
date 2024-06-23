@@ -71,7 +71,7 @@ fi
 echo "Build atf..."
 make -C "$ATF_DIR" -f makefile "$ATF_CFG" CONFIG_CROSS_COMPILER="${TOOLCHAIN}"
 make -C "$ATF_DIR" -f makefile clean CONFIG_CROSS_COMPILER="${TOOLCHAIN}"
-#rm -rf "$ATF_DIR/build"
+rm -rf "$ATF_DIR/build"
 make -C "$ATF_DIR" -f makefile all CONFIG_CROSS_COMPILER="${TOOLCHAIN}"
 
 mkdir -p "output"
