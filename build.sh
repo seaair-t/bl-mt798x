@@ -84,6 +84,7 @@ if [ -f "$ATF_DIR/build/${SOC}/release/fip.bin" ]; then
 		FIP_NAME="${FIP_NAME}-multi-layout"
 	fi
 	cp -f "$ATF_DIR/build/${SOC}/release/fip.bin" "output/${FIP_NAME}.bin"
+ 	cp -f "$ATF_DIR/build/${SOC}/release/bl31.bin" "output/${FIP_NAME}-bl3.bin"
 	echo "$FIP_NAME build done"
 else
 	echo "fip build fail!"
