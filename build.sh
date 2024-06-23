@@ -58,15 +58,15 @@ if [ "$fixedparts" = "1" ]; then
 	echo "CONFIG_MEDIATEK_UBI_FIXED_MTDPARTS=y" >> "$UBOOT_DIR/.config"
 	echo "CONFIG_MTK_FIXED_MTD_MTDPARTS=y" >> "$UBOOT_DIR/.config"
 fi
-#make -C "$UBOOT_DIR" olddefconfig
-#make -C "$UBOOT_DIR" -j $(nproc) all
-#if [ -f "$UBOOT_DIR/u-boot.bin" ]; then
-#	cp -f "$UBOOT_DIR/u-boot.bin" "$ATF_DIR/u-boot.bin"
-#	echo "u-boot build done!"
-#else
-#	echo "u-boot build fail!"
-#	exit 1
-#fi
+make -C "$UBOOT_DIR" olddefconfig
+make -C "$UBOOT_DIR" -j $(nproc) all
+if [ -f "$UBOOT_DIR/u-boot.bin" ]; then
+	cp -f "$UBOOT_DIR/u-boot.bin" "$ATF_DIR/u-boot.bin"
+	echo "u-boot build done!"
+else
+	echo "u-boot build fail!"
+	exit 1
+fi
 
 echo "Build atf..."
 make -C "$ATF_DIR" -f makefile "$ATF_CFG" CONFIG_CROSS_COMPILER="${TOOLCHAIN}"
