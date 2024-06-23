@@ -60,13 +60,13 @@ if [ "$fixedparts" = "1" ]; then
 fi
 #make -C "$UBOOT_DIR" olddefconfig
 #make -C "$UBOOT_DIR" -j $(nproc) all
-if [ -f "$UBOOT_DIR/u-boot.bin" ]; then
-	cp -f "$UBOOT_DIR/u-boot.bin" "$ATF_DIR/u-boot.bin"
-	echo "u-boot build done!"
-else
-	echo "u-boot build fail!"
-	exit 1
-fi
+#if [ -f "$UBOOT_DIR/u-boot.bin" ]; then
+#	cp -f "$UBOOT_DIR/u-boot.bin" "$ATF_DIR/u-boot.bin"
+#	echo "u-boot build done!"
+#else
+#	echo "u-boot build fail!"
+#	exit 1
+#fi
 
 echo "Build atf..."
 make -C "$ATF_DIR" -f makefile "$ATF_CFG" CONFIG_CROSS_COMPILER="${TOOLCHAIN}"
